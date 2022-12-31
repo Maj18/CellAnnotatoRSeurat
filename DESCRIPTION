@@ -1,0 +1,20 @@
+Package: CellAnnotatoRSeurat
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Yuan", "Li", , "ivon19571226@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Cell cluster annotation using marker genes.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Imports: 
+    dplyr,
+    ggplot2,
+    Seurat
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

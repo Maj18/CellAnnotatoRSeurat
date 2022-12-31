@@ -1,0 +1,98 @@
+---
+title: "introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Seurat)
+require(dplyr)
+library(ggplot2)
+```
+
+# 1. Import data
+```{r setup}
+OUT_DIR <- "/Users/ekol-yal/Documents/Kirkeby/Proj3_hypothalamic/Proj3_hypothalamus_ref/gw18/sample_integration/sample_integration/output/annotation/"
+
+IN_FILE <- "/Users/ekol-yal/Documents/Kirkeby/Proj3_hypothalamic/Proj3_hypothalamus_ref/gw18/sample_integration/sample_integration/output/gw18_all_integrated.RDS"
+obj <- readRDS(IN_FILE)
+obj
+```
+
+# Define marker list
+```{r setup}
+marker.list <- list(NE=c("VIM", "HMGA2", "ARHGAP28", "ALCAM"), NP=c("NES", "ASCL1", "NBPF10", "NBPF15", "PLAGL1", "SFTA3"),
+                    Neuron=c("STMN2", "SYT1", "SLC32A1", "GAD2", "HDC", "SLC17A6"), OPC=c("PDGFRA", "GPR75-ASB3"),
+                    OL=c("OLIG2", "GPR75-ASB3", "MBP", "MOG"), Astrocyte=c("AQP4", "AGT", "FAM107A"), 
+                    Ependy=c("CCDC153", "CCDC74A", "CCDC74B", "LRTOMT"), Microglia=c("AIF1", "CX3CR1","ITGAM", "PTPRC"), 
+                    Endoth=c("CLDN5", "FLT1", "SLC38A5"), Mural=c("NDUFA4L2", "PDGFRB"), VLMC=c("PTGDS", "COL1A1"))
+   
+```
+
+# 3. Annotation by cell and by cluster, based on provided markers above
+```{r setup}
+classification="integrated_snn_res.0.3"
+rslt <- annOnMarker(obj=obj, marker.list, classification=classification)
+obj <- rslt$obj
+```
+
+# 4. Check result
+
+### 4.1 Plot annotation by cell, by cluster, as well as the original classification side by side
+```{r setup}
+pdf(paste0(OUT_DIR, "prediction.rslt.pdf"), h=7, w=8)
+cowplot::plot_grid(
+    DimPlot(obj, group.by="annotation_cell", label=T, label.box=T, repel=T) + NoLegend(),
+    DimPlot(obj, group.by=classification, label=T, label.box=T, repel=T) + NoLegend(),
+    DimPlot(obj, group.by="annotation_cluster", label=T, label.box=T, repel=T) + NoLegend(),
+    nrow=2
+    )
+dev.off() 
+```
+
+# 4.2 To check the result for the annotation by cluster, we can make a stacked VlnPlot
+```{r setup}
+plot <- stackedVlnPlot(obj, marker.list)
+pdf(paste0(OUT_DIR,  "Stacked_violinPlot_core_marker.pdf"), h=6.5, w=4.3)
+  plot
+dev.off()
+```
+
+# 4.2 To check other alternative top annotation for each cluster
+```{r setup}
+top3 <- rslt$top3ann
+write.table(top3, paste0(OUT_DIR, "Table_prediction_", classification, "_top3.csv"))
+```
+
+
+# 5. Save files
+```{r setup}
+saveRDS(obj, IN_FILE)
+```
+
+```{r setup}
+sink(paste0(OUT_DIR, "sessionInfo.csv"))
+sessionInfo()
+sink()
+```
+
+
+
+
+
+
+
+
+
+
+
