@@ -1,6 +1,6 @@
 #devtools::load_all("/Users/ekol-yal/Applications/CellAnnotatoRSeurat")
 
-usethis::use_package(Matrix, lib.loc="/System/Volumes/Data/Users/ekol-yal/opt/anaconda3/pkgs/r-matrix-1.5_1-r42hce01bf1_0/lib/R/library")
+#usethis::use_package(Matrix, lib.loc="/System/Volumes/Data/Users/ekol-yal/opt/anaconda3/pkgs/r-matrix-1.5_1-r42hce01bf1_0/lib/R/library")
 usethis::use_package('Seurat')
 usethis::use_package('dplyr')
 usethis::use_package('ggplot2')
