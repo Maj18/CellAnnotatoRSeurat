@@ -3,4 +3,5 @@
 
 # Quick guide
 library(devtools)
+
 devtools::install_github("Maj18/CellAnnotatoRSeurat")
