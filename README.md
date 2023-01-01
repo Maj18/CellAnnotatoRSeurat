@@ -23,7 +23,7 @@
 
     DIR <- "~/bin/CellAnnotatoRSeurat/example/"
     INDIR <- paste0(DIR, "/data/")
-    obj <- readRDS(paste0(INDIR, "gw20_integrated.RDS"))
+    obj <- readRDS(paste0(INDIR, "gw20_integrated.RDS")) # The dataset is the GW20 data from Zhou et al. 2022 CellStemCell
     
 ### 3. Define a marker list
 
@@ -35,7 +35,7 @@
 
 ### 4. Annotation by cell and by cluster, based on provided markers above
 
-classification="integrated_snn_res.0.1"
+classification="integrated_snn_res.0.9" # classification to be annotated
 rslt <- annOnMarker(obj=obj, marker.list, classification=classification)
 obj <- rslt$obj
 
