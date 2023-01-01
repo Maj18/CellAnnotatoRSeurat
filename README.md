@@ -49,6 +49,7 @@ obj <- rslt$obj
         DimPlot(obj, group.by="annotation_cluster", label=T, label.box=T, repel=T) + NoLegend(),
         nrow=2
         )
+    ![prediction.rslt](assets/prediction.rslt.pdf)
         
 **To check the quality of the annotation by cluster, we can make a stacked VlnPlot** 
 
