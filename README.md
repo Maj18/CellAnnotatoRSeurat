@@ -1,6 +1,6 @@
 
 # CellAnnotatoRSeurat
-**Annotate cells/cluster based on a marker list**
+**Annotate cells/cluster according to a marker list, based on a seurat object**
 
 # Quick guide
 
