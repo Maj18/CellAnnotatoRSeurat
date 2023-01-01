@@ -58,6 +58,11 @@ obj <- rslt$obj
     
 ![StackedVlnPlot](assets/StackedVlnPlot.png)
 
+Check the stacked VlnPlot for improper annotation (such as major marker gene does not express)<br>
+To improve the annotation, either add new marker genes,<br>
+or check the differentially expressed genes of the original classification, to add potentially missed celltypes<br>
+or Considering increasing clustering resolution to increase annotation resolution.
+
 **To check other alternative top annotation for each cluster**
 
     rslt$top3ann
