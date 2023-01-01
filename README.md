@@ -56,6 +56,8 @@ obj <- rslt$obj
 
     stackedVlnPlot(obj, marker.list)
     
+![StackedVlnPlot](assets/StackedVlnPlot.png)
+
 **To check other alternative top annotation for each cluster**
 
     rslt$top3ann
