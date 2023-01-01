@@ -50,7 +50,7 @@ obj <- rslt$obj
         nrow=2
         )
         
-    ![prediction.rslt](/assets/prediction.rslt.pdf)
+![prediction.rslt](/assets/prediction.rslt.pdf)
         
 **To check the quality of the annotation by cluster, we can make a stacked VlnPlot** 
 
