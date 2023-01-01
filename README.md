@@ -61,4 +61,6 @@ obj <- rslt$obj
 **To check other alternative top annotation for each cluster**
 
     rslt$top3ann
+    
+![StackedVlnPlot](assets/top3.png)
 
