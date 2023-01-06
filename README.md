@@ -35,11 +35,9 @@
 
 ### 4. Annotation by cell and by cluster, based on provided markers above
 
-classification="integrated_snn_res.0.9" # classification to be annotated
-
-rslt <- annOnMarker(obj=obj, marker.list, classification=classification)
-
-obj <- rslt$obj
+    classification="integrated_snn_res.0.9" # classification to be annotated
+    rslt <- annOnMarker(obj=obj, marker.list, classification=classification)
+    obj <- rslt$obj
 
 ### 5. Check results
 
