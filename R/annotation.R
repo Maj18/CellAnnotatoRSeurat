@@ -32,11 +32,14 @@ annOnMarker <- function(obj, marker.list, classification="SCT_snn_res.0.3") {
   tf.idf@x[1:4]
   tf.idf@p[1:5]
   tf.idf@x <- tf.idf@x * rep(idf.wei, diff(tf.idf@p))
-
+  
+  marker.list <- lapply(marker.list, function(m) {
+    intersect(m, rownames(obj))}) 
+  marker.list <- marker.list[lapply(marker.list, length)>0]
   # Check whether the markers in the seurat object:
-  missed.markers <- setdiff(unlist(marker.list), rownames(obj))
-  print(c("The following markers are missing from the dataset", missed.markers, 
-    "please make sure each celltype has at least one marker in the dataset!"))
+  #missed.markers <- setdiff(unlist(marker.list), rownames(obj))
+  #print(c("The following markers are missing from the dataset", missed.markers, 
+  #  "please make sure each celltype has at least one marker in the dataset!"))
 
   tf.idf <- as.matrix(tf.idf)
   ti <- lapply(marker.list, function(markers){
