@@ -59,6 +59,12 @@ annOnMarker <- function(obj, marker.list, classification="SCT_snn_res.0.3") {
   tab %>% group_by(classification) %>% top_n(n=1, wt="freq")
   top1 <- tab %>% group_by(classification) %>% top_n(n=1, wt=freq)
   top3 <- tab %>% group_by(classification) %>% top_n(n=3, wt=freq)
+  # For tie situation
+  clr <- unique(top1[,1][[1]])
+  first <- lapply(clr, function(i) {
+        print(top1[top1[,1][[1]] %in% i, ][1,])
+  })
+  top1 <- do.call(rbind, first)
 
   obj@meta.data[, "annotation_cluster"] <- obj@meta.data[, classification]
   new.cluster.ids <- top1$annotation_cell ####
