@@ -27,7 +27,7 @@
     
 ### 3. Define a marker list
 
-    marker.list <- list(NE=c("VIM", "HMGA2", "ARHGAP28", "ALCAM"), NP=c("NES", "ASCL1", "NBPF10", "NBPF15", "PLAGL1", "SFTA3"),
+    marker.list <- list(NE=c("VIM", "HMGA2", "ARHGAP28", "ALCAM"), NP=c("NES", "SOX2", "NBPF10", "NBPF15", "PLAGL1", "SFTA3"),
                     Neuron=c("STMN2", "SYT1", "SLC32A1", "GAD2", "HDC", "SLC17A6"), OPC=c("PDGFRA", "GPR75-ASB3"),
                     OL=c("OLIG2", "GPR75-ASB3", "MBP", "MOG"), Astrocyte=c("AQP4", "AGT", "FAM107A"), 
                     Ependy=c("CCDC153", "CCDC74A", "CCDC74B", "LRTOMT"), Microglia=c("AIF1", "CX3CR1","ITGAM", "PTPRC"), 
