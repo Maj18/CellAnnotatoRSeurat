@@ -9,7 +9,7 @@ usethis::use_package('ggplot2')
 #' @param obj a seurat object
 #' @param clr2change classification to be relabeled
 #' @param new.cluster.ids new label, make sure the order in new.cluster.ids should correspond to that in levels(obj@meta.data[, clr2change])
-#' @export
+#' @export changeLabel
 changeLabel <- function(obj, clr2change, new.cluster.ids) {
   Idents(obj) <- obj@meta.data[, clr2change]
   names(new.cluster.ids) <- levels(obj@meta.data[, clr2change])
@@ -23,7 +23,7 @@ changeLabel <- function(obj, clr2change, new.cluster.ids) {
 #' @param obj a seurat object
 #' @param marker.list a list of markers for different cell types
 #' @param classification classification to be annotated
-#' @export
+#' @export annOnMarker
 annOnMarker <- function(obj, marker.list, classification="SCT_snn_res.0.3") {
   idf.wei <- log(1+ncol(obj)/(rowSums(as.matrix(obj@assays$SCT@data>0)) + 1))
   tf.idf <- Matrix(t(as.matrix(obj@assays$SCT@data)), sparse=TRUE)
@@ -80,7 +80,7 @@ annOnMarker <- function(obj, marker.list, classification="SCT_snn_res.0.3") {
 #' @param marker.list a list of markers for different cell types
 #' @param classification classification to be annotated
 #' @param plot.margin  plot margin
-#' @export
+#' @export stackedVlnPlot
 stackedVlnPlot <- function(obj, marker.list, plot.margin = unit(c(0.9, 1, 1, 2), "cm")) {
   Idents(obj) <- obj$annotation_cluster
   markers <- marker.list[levels(obj$annotation_cluster)] %>% unlist
