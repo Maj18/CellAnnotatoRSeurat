@@ -70,7 +70,7 @@ annOnMarker <- function(obj, marker.list, classification="SCT_snn_res.0.3") {
   new.cluster.ids <- top1$annotation_cell ####
   obj <- changeLabel(obj, "annotation_cluster", new.cluster.ids)
 
-  return(list(obj=obj, missed.markers=missed.markers, top3ann=top3))
+  return(list(obj=obj, top3ann=top3))
 }
 
 
