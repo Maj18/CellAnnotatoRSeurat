@@ -14,6 +14,10 @@ Imports:
     dplyr,
     ggplot2,
     Seurat
+Exports:
+    changeLabel,
+    annOnMarker,
+    stackedVlnPlot
 Suggests: 
     knitr,
     rmarkdown
